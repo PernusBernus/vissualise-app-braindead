@@ -167,8 +167,23 @@
           ids.forEach(function(element) {
             apiCalls.push(apiPrefix + element + '/events')
           }, this);
+          var events = []
           apiCalls.forEach(function(element) {
-            
+            if (element) {
+              events[element]
+              this.$http.get(element).then(response => {
+                // success callback
+                console.log(response.body)
+                var temp = response.body
+                temp.forEach(function(element) {
+                  if (element.event === 'referenced') {
+
+                  }
+                }, this);
+              }, response => {
+                // error callback
+              })
+            }
           }, this);
           return true
         },
